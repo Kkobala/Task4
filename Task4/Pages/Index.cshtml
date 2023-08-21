@@ -1,0 +1,52 @@
+﻿@page
+@using Task4.Pages;
+@model IndexModel
+@{
+    ViewData["Title"] = "User Management";
+}
+
+<h2>User Management</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">
+                <input type="checkbox" id="selectAll" />
+            </th>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Last Login Time</th>
+            <th scope="col">Registration Time</th>
+            <th scope="col">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>
+                    <input type="checkbox" data-user-id="@user.Id" class="checkbox-item" />
+                </td>
+                <td>@user.Id</td>
+                <td>@user.Name</td>
+                <td>@user.Email</td>
+                <td>@user.LastLoginTime</td>
+                <td>@user.RegistrationTime</td>
+                <td>@user.Status</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with actions">
+    <div class="btn-group mr-2" role="group">
+        <button type="button" class="btn btn-danger" id="blockButton">Block</button>
+        <button type="button" class="btn btn-secondary" id="unblockButton">Unblock</button>
+        <button type="button" class="btn btn-secondary" id="deleteButton">Delete</button>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/script.js"></script>
+}
